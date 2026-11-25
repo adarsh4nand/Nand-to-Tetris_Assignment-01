@@ -1,0 +1,11 @@
+// HalfAdder.hdl -- Nand to Tetris capstone (Hack computer), built from Nand.
+// ETCNTC301 / ETCCNT301 -- K.R. Mangalam University
+
+CHIP HalfAdder {
+    IN a, b;
+    OUT sum, carry;
+
+    PARTS:
+    Xor(a=a, b=b, out=sum);
+    And(a=a, b=b, out=carry);
+}

@@ -1,0 +1,24 @@
+// Memory.hdl -- Nand to Tetris capstone (Hack computer), built from Nand.
+// ETCNTC301 / ETCCNT301 -- K.R. Mangalam University
+
+CHIP Memory {
+    IN in[16], load, address[15];
+    OUT out[16];
+
+    PARTS:
+    // address[14]=0 -> RAM (0..16383); [14]=1,[13]=0 -> Screen (16384..24575);
+    // [14]=1,[13]=1 -> Keyboard (24576)
+    Not(in=address[14], out=notAddress14);
+    Not(in=address[13], out=notAddress13);
+    And(a=load, b=notAddress14, out=loadRAM);
+    And(a=address[14], b=notAddress13, out=isScreen);
+    And(a=load, b=isScreen, out=loadScreen);
+
+    RAM16K(in=in, load=loadRAM, address=address[0..13], out=outRAM);
+    Screen(in=in, load=loadScreen, address=address[0..12], out=outScreen);
+    Keyboard(out=outKeyboard);
+
+    And(a=address[14], b=address[13], out=isKeyboard);
+    Mux16(a=outRAM, b=outScreen, sel=address[14], out=outMemory);
+    Mux16(a=outMemory, b=outKeyboard, sel=isKeyboard, out=out);
+}

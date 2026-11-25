@@ -1,0 +1,20 @@
+// DMux8Way.hdl -- Nand to Tetris capstone (Hack computer), built from Nand.
+// ETCNTC301 / ETCCNT301 -- K.R. Mangalam University
+
+CHIP DMux8Way {
+    IN in, sel[3];
+    OUT a, b, c, d, e, f, g, h;
+
+    PARTS:
+    DMux4Way(in=in, sel=sel[0..1], a=abcdA, b=abcdB, c=abcdC, d=abcdD);
+    DMux4Way(in=in, sel=sel[0..1], a=efghA, b=efghB, c=efghC, d=efghD);
+    Not(in=sel[2], out=notSel2);
+    And(a=abcdA, b=notSel2, out=a);
+    And(a=abcdB, b=notSel2, out=b);
+    And(a=abcdC, b=notSel2, out=c);
+    And(a=abcdD, b=notSel2, out=d);
+    And(a=efghA, b=sel[2], out=e);
+    And(a=efghB, b=sel[2], out=f);
+    And(a=efghC, b=sel[2], out=g);
+    And(a=efghD, b=sel[2], out=h);
+}
