@@ -8,8 +8,8 @@ The box is described in one place (three numbers at the top of Box.asm):
     width     = 16 * ((K mod 4) + 1) pixels = (K mod 4) + 1 words
 
 Usage:
-    python3 make_box.py 41          # K = 41 -> writes Box.asm
-    python3 make_box.py 41 --asm Box.asm --hack Box.hack
+    python3 make_box.py 93          # K = 93 -> writes Box.asm
+    python3 make_box.py 93 --asm Box.asm --hack Box.hack
 """
 
 import argparse
@@ -173,7 +173,7 @@ def main():
     words = (args.k % 4) + 1
     pixels = words * 16
     height = 20
-    moved = args.k + 10
+    moved = min(args.k + 10, 235)      # a start row for the viva demo, still on screen
 
     source = TEMPLATE.format(
         K=args.k,

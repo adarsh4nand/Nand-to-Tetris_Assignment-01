@@ -2,8 +2,8 @@
 //  Box.asm -- draw a black box on the Hack screen while a key is pressed
 //  Nand to Tetris capstone, Part C
 //
-//  K = 41          (last two digits of the roll number)
-//    start row      = K                       = 41
+//  K = 93          (last two digits of the roll number)
+//    start row      = K                       = 93
 //    height         = 20 rows                 = 20
 //    width          = 16 * ((K mod 4) + 1)    = 16 * 2 = 32 pixels = 2 words
 //    left edge      = column 0 (word 0 of every row)
@@ -13,11 +13,11 @@
 //               writing  0  to a word clears them
 //
 //  To move the box down for the viva, change the number on the
-//  "START ROW" line below (for example 41 -> 51) and reassemble.
+//  "START ROW" line below (for example 93 -> 103) and reassemble.
 // ==========================================================================
 
 (BOOT)
-    @41                     // START ROW = K
+    @93                     // START ROW = K
     D=A
     @startRow
     M=D
