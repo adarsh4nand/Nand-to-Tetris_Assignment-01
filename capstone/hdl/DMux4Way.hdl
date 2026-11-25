@@ -1,0 +1,17 @@
+// DMux4Way.hdl -- Nand to Tetris capstone (Hack computer), built from Nand.
+// ETCNTC301 / ETCCNT301 -- K.R. Mangalam University
+
+CHIP DMux4Way {
+    IN in, sel[2];
+    OUT a, b, c, d;
+
+    PARTS:
+    Not(in=sel[1], out=notSel1);
+    And(a=in, b=notSel1, out=low);
+    And(a=in, b=sel[1], out=high);
+    Not(in=sel[0], out=notSel0);
+    And(a=low, b=notSel0, out=a);
+    And(a=low, b=sel[0], out=b);
+    And(a=high, b=notSel0, out=c);
+    And(a=high, b=sel[0], out=d);
+}

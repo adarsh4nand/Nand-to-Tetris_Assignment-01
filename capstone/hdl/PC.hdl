@@ -1,0 +1,18 @@
+// PC.hdl -- Nand to Tetris capstone (Hack computer), built from Nand.
+// ETCNTC301 / ETCCNT301 -- K.R. Mangalam University
+
+CHIP PC {
+    IN in[16], load, inc, reset;
+    OUT out[16];
+
+    PARTS:
+    // next value: reset > load > inc > hold
+    Inc16(in=regOut, out=incOut);
+    Mux16(a=regOut, b=incOut, sel=inc, out=incChosen);
+    Mux16(a=incChosen, b=in, sel=load, out=loadChosen);
+    Mux16(a=loadChosen, b=false, sel=reset, out=nextValue);
+    Or(a=load, b=inc, out=doLoad);
+    Or(a=doLoad, b=reset, out=loadPC);
+    Register(in=nextValue, load=loadPC, out=regOut);
+    Or16(a=regOut, b=false, out=out);
+}
