@@ -1,7 +1,7 @@
 # Capstone — Make the Computer Draw a Box
 
-Nand to Tetris – I (ETCNTC301) · School of Engineering & Technology, K.R. Mangalam University
-Individual work — **K = 93** (last two digits of roll number 2501730393)
+Nand to Tetris – I (ETCNTC301) · School of Engineering & Technology
+Adarsh Anand — **K = 93** (last two digits of roll number 2501730393)
 
 | What K decides | Rule | Value |
 |---|---|---|
