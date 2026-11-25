@@ -79,15 +79,4 @@ python3 tools/hack_emu.py Box.hack --script press,0,press --cycles 300000 --png 
 Measured for K = 41: box at rows 41–60, columns 0–31 (32 pixels wide), 640 black pixels,
 empty after the key is released, back when it is pressed again.
 
-To move the box down during the viva, change the number on the line marked
-`START ROW = K` in `Box.asm` (41 → 60), then run `python3 assembler.py Box.asm` and load
-the new `Box.hack`.
 
-## Screenshots to take in the official tools
-
-The report has four marked places; take these in the nand2tetris tools:
-
-1. `CPU.tst` in the Hardware Simulator
-2. `ComputerRect.tst` in the Hardware Simulator
-3. the duplicate-label warning (or `symbols.txt`)
-4. the CPU Emulator running `Box.hack` with a key held — the box on screen
